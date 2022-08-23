@@ -1,8 +1,23 @@
 #include <iostream>
 #include <vector>
+#include <string>
+#include <fstream>
 
 using std::cout;
 using std::vector;
+using std::string;
+using std::ifstream;
+
+void ReadBoardFile(string path) {
+    ifstream board (path);
+
+    if (board) {
+        string line;
+        while (getline(board, line)) {
+            cout << line << "\n";
+        }
+    }
+}
 
 void PrintBoard(const vector<vector<int>> board) {
     for (vector<int> line : board) {
@@ -14,11 +29,6 @@ void PrintBoard(const vector<vector<int>> board) {
 }
 
 int main() {
-    vector<vector <int>> board{{0, 1, 0, 0, 0, 0},
-                                {0, 1, 0, 0, 0, 0},
-                                {0, 1, 0, 0, 0, 0},
-                                {0, 1, 0, 0, 0, 0},
-                                {0, 0, 0, 0, 1, 0}};
-
-    PrintBoard(board);
+    string board = "1.board";
+    ReadBoardFile(board);
 }
