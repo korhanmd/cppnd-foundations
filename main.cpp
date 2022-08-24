@@ -43,6 +43,9 @@ void PrintBoard(const vector<vector<int>> board) {
     }
 }
 
+#include "test.cpp"
+
 int main() {
     ReadBoardFile("1.board");
+    TestParseLine();
 }
