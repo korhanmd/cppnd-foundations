@@ -111,4 +111,5 @@ int main() {
     // Tests
     TestHeuristic();
     TestAddToOpen();
+    TestCompare();
 }
