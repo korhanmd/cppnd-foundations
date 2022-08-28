@@ -135,4 +135,5 @@ int main() {
     TestHeuristic();
     TestAddToOpen();
     TestCompare();
+    TestSearch();
 }
