@@ -170,4 +170,5 @@ int main() {
     TestCompare();
     TestSearch();
     TestCheckValidCell();
+    TestExpandNeighbors();
 }
