@@ -61,6 +61,17 @@ int Heuristic(int x1, int y1, int x2, int y2) {
     return abs(x2 - x1) + abs(y2 - y1);
 }
 
+// Checks if the cell inside the board and empty
+bool CheckValidCell(int x, int y, vector<vector<State>> &board) {
+    bool is_x_inside = (x >= 0 && x < board.size());
+    bool is_y_inside = (y >= 0 && y < board[0].size());
+
+    if (is_x_inside && is_y_inside)
+        return board[x][y] == State::kEmpty;
+    
+    return false;
+}
+
 // Adds cell to the openlist and closes it from the grid
 void AddToOpen(int x, int y, int g, int h, vector<vector<int>> &openlist, vector<vector<State>> &board) {
     openlist.push_back(vector<int>{x, y, g, h});
