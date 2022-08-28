@@ -41,6 +41,12 @@ vector<vector<State>> ReadBoardFile(string path) {
     return board;
 }
 
+// Returns the board with a path from start to the goal
+vector<vector<State>> Search(vector<vector<State>> board, int init[2], int goal[2]){
+    cout << "No path found!\n";
+    return vector<vector<State>> {};
+}
+
 // Returns formatted string according to input State
 string CellString(State s) {
     switch (s) {
@@ -62,6 +68,11 @@ void PrintBoard(const vector<vector<State>> board) {
 }
 
 int main() {
+    int init[] {0, 0};
+    int goal[] {4, 5};
+
     vector<vector<State>> board = ReadBoardFile("1.board");
-    PrintBoard(board);
+    vector<vector<State>> solution = Search(board, init, goal);
+
+    PrintBoard(solution);
 }
