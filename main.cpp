@@ -41,6 +41,14 @@ vector<vector<State>> ReadBoardFile(string path) {
     return board;
 }
 
+// Compares two cells according to their F values
+bool Compare(vector<int> first, vector<int> second) {
+    int first_f = first[2] + first[3];
+    int second_f = second[2] + second[3];
+
+    return first_f > second_f;
+}
+
 // Calculates heuristic with Manhattan Distance
 int Heuristic(int x1, int y1, int x2, int y2) {
     return abs(x2 - x1) + abs(y2 - y1);
