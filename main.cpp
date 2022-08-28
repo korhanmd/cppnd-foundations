@@ -12,7 +12,7 @@ using std::ifstream;
 using std::istringstream;
 using std::sort;
 
-enum class State {kEmpty, kObstacle, kClosed};
+enum class State {kEmpty, kObstacle, kClosed, kPath};
 
 // Reads a string line, converts the line to a int vector and returns the vector
 vector<State> ParseLine(string line) {
@@ -79,6 +79,22 @@ vector<vector<State>> Search(vector<vector<State>> board, int init[2], int goal[
 
     // Add the node to the openlist
     AddToOpen(x, y, 0, heuristic, open, board);
+
+    while (open.size() > 0) {
+        CellSort(&open);
+
+        // Get the current cell
+        auto current = open.back();
+        open.pop_back();
+
+        x = current[0];
+        y = current[1];
+        board[x][y] = State::kPath;
+
+        // If current cell is the goal, return board
+        if (x == goal[0] && y == goal[1])
+            return board;
+    }
 
     cout << "No path found!\n";
     return vector<vector<State>> {};
