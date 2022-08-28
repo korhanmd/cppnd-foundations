@@ -89,5 +89,7 @@ int main() {
 
     PrintBoard(solution);
 
+    // Tests
     TestHeuristic();
+    TestAddToOpen();
 }
