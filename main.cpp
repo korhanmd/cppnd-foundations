@@ -105,6 +105,8 @@ string CellString(State s) {
     switch (s) {
     case State::kObstacle:
         return "⛰️   ";
+    case State::kPath:
+        return "🚗   ";
     default:
         return "0   ";
     }
