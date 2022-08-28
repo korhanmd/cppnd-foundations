@@ -47,13 +47,24 @@ int Heuristic(int x1, int y1, int x2, int y2) {
 }
 
 // Adds cell to the openlist and closes it from the grid
-void AddToOpen(int x, int y, int g, int h, vector<vector<int>> &openlist, vector<vector<State>> &grid) {
+void AddToOpen(int x, int y, int g, int h, vector<vector<int>> &openlist, vector<vector<State>> &board) {
     openlist.push_back(vector<int>{x, y, g, h});
-    grid[x][y] = State::kClosed;
+    board[x][y] = State::kClosed;
 }
 
 // Returns the board with a path from start to the goal
 vector<vector<State>> Search(vector<vector<State>> board, int init[2], int goal[2]) {
+    // Openlist vector
+    vector<vector<int>> open {};
+
+    // Calculate the heuristic of initial node
+    int x = init[0];
+    int y = init[1];
+    int heuristic = Heuristic(x, y, goal[0], goal[1]);
+
+    // Add the node to the openlist
+    AddToOpen(x, y, 0, heuristic, open, board);
+
     cout << "No path found!\n";
     return vector<vector<State>> {};
 }
