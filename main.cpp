@@ -51,6 +51,11 @@ bool Compare(vector<int> first, vector<int> second) {
     return first_f > second_f;
 }
 
+// Sorts the two-dimensional vector in descending order
+void CellSort(vector<vector<int>> *v) {
+    sort(v->begin(), v->end(), Compare);
+}
+
 // Calculates heuristic with Manhattan Distance
 int Heuristic(int x1, int y1, int x2, int y2) {
     return abs(x2 - x1) + abs(y2 - y1);
