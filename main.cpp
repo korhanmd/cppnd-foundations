@@ -3,12 +3,14 @@
 #include <string>
 #include <fstream>
 #include <sstream>
+#include <algorithm>
 
 using std::cout;
 using std::vector;
 using std::string;
 using std::ifstream;
 using std::istringstream;
+using std::sort;
 
 enum class State {kEmpty, kObstacle, kClosed};
 
