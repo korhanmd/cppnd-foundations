@@ -71,6 +71,8 @@ void PrintBoard(const vector<vector<State>> board) {
     }
 }
 
+#include "test_heuristic.cpp"
+
 int main() {
     int init[] {0, 0};
     int goal[] {4, 5};
@@ -79,4 +81,6 @@ int main() {
     vector<vector<State>> solution = Search(board, init, goal);
 
     PrintBoard(solution);
+
+    TestHeuristic();
 }
