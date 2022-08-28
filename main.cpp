@@ -12,7 +12,7 @@ using std::ifstream;
 using std::istringstream;
 using std::sort;
 
-enum class State {kEmpty, kObstacle, kClosed, kPath};
+enum class State {kEmpty, kObstacle, kClosed, kPath, kStart, kFinish};
 
 // directional deltas
 const int delta[4][2]{{-1, 0}, {0, -1}, {1, 0}, {0, 1}};
@@ -121,8 +121,11 @@ vector<vector<State>> Search(vector<vector<State>> board, int init[2], int goal[
         board[x][y] = State::kPath;
 
         // If current cell is the goal, return board
-        if (x == goal[0] && y == goal[1])
+        if (x == goal[0] && y == goal[1]) {
+            board[init[0]][init[1]] = State::kStart;
+            board[x][y] = State::kFinish;
             return board;
+        }
 
         ExpandNeighbors(current, goal, open, board);
     }
@@ -138,6 +141,10 @@ string CellString(State s) {
         return "⛰️   ";
     case State::kPath:
         return "🚗   ";
+    case State::kStart:
+        return "🚦   ";
+    case State::kFinish:
+        return "🏁   ";
     default:
         return "0   ";
     }
