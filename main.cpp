@@ -12,7 +12,7 @@ using std::istringstream;
 
 enum class State {kEmpty, kObstacle};
 
-// Read a string line, converts the line to a int vector and returns the vector
+// Reads a string line, converts the line to a int vector and returns the vector
 vector<State> ParseLine(string line) {
     istringstream sline(line);
     int i;
@@ -41,8 +41,12 @@ vector<vector<State>> ReadBoardFile(string path) {
     return board;
 }
 
+int Heuristic(int x1, int y1, int x2, int y2) {
+    return abs(x2 - x1) + abs(y2 - y1);
+}
+
 // Returns the board with a path from start to the goal
-vector<vector<State>> Search(vector<vector<State>> board, int init[2], int goal[2]){
+vector<vector<State>> Search(vector<vector<State>> board, int init[2], int goal[2]) {
     cout << "No path found!\n";
     return vector<vector<State>> {};
 }
