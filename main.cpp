@@ -14,6 +14,9 @@ using std::sort;
 
 enum class State {kEmpty, kObstacle, kClosed, kPath};
 
+// directional deltas
+const int delta[4][2]{{-1, 0}, {0, -1}, {1, 0}, {0, 1}};
+
 // Reads a string line, converts the line to a int vector and returns the vector
 vector<State> ParseLine(string line) {
     istringstream sline(line);
@@ -78,6 +81,21 @@ void AddToOpen(int x, int y, int g, int h, vector<vector<int>> &openlist, vector
     board[x][y] = State::kClosed;
 }
 
+// Adds valid neighbors of the current cell to the openlist
+void ExpandNeighbors(const vector<int> &current, int goal[2], vector<vector<int>> &openlist, vector<vector<State>> &board) {
+    int x = current[0];
+    int y = current[1];
+
+    for (const int *d : delta) {
+        int x2 = x + d[0];
+        int y2 = y + d[1];
+
+        if (CheckValidCell(x2, y2, board)) {
+            AddToOpen(x2, y2, current[2] + 1, Heuristic(x2, y2, goal[0], goal[1]), openlist, board);
+        }
+    }
+}
+
 // Returns the board with a path from start to the goal
 vector<vector<State>> Search(vector<vector<State>> board, int init[2], int goal[2]) {
     // Openlist vector
@@ -105,6 +123,8 @@ vector<vector<State>> Search(vector<vector<State>> board, int init[2], int goal[
         // If current cell is the goal, return board
         if (x == goal[0] && y == goal[1])
             return board;
+
+        ExpandNeighbors(current, goal, open, board);
     }
 
     cout << "No path found!\n";
