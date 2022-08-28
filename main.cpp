@@ -149,4 +149,5 @@ int main() {
     TestAddToOpen();
     TestCompare();
     TestSearch();
+    TestCheckValidCell();
 }
