@@ -10,7 +10,7 @@ using std::string;
 using std::ifstream;
 using std::istringstream;
 
-enum class State {kEmpty, kObstacle};
+enum class State {kEmpty, kObstacle, kClosed};
 
 // Reads a string line, converts the line to a int vector and returns the vector
 vector<State> ParseLine(string line) {
@@ -41,8 +41,15 @@ vector<vector<State>> ReadBoardFile(string path) {
     return board;
 }
 
+// Calculates heuristic with Manhattan Distance
 int Heuristic(int x1, int y1, int x2, int y2) {
     return abs(x2 - x1) + abs(y2 - y1);
+}
+
+// Adds cell to the openlist and closes it from the grid
+void AddToOpen(int x, int y, int g, int h, vector<vector<int>> &openlist, vector<vector<State>> &grid) {
+    openlist.push_back(vector<int>{x, y, g, h});
+    grid[x][y] = State::kClosed;
 }
 
 // Returns the board with a path from start to the goal
