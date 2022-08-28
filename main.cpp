@@ -78,7 +78,7 @@ void PrintBoard(const vector<vector<State>> board) {
     }
 }
 
-#include "test_heuristic.cpp"
+#include "test.cpp"
 
 int main() {
     int init[] {0, 0};
