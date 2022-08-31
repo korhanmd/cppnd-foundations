@@ -9,7 +9,7 @@ Implemented A* Star Search from scratch in C++.
 Program reads the board from `1.board` file. It consists of **0**s and **1**s seperated with commas. 0s are empty roads and 1s are obstacles.
 Each new line represents a row and ends with a comma.
 
-## Running instructions (Linux)
+## Build instructions (Linux)
 
 ### Compile
 
