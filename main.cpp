@@ -172,10 +172,12 @@ int main() {
     PrintBoard(solution);
 
     // Tests
+    /*
     TestHeuristic();
     TestAddToOpen();
     TestCompare();
     TestSearch();
     TestCheckValidCell();
     TestExpandNeighbors();
+    */
 }
